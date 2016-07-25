@@ -27,14 +27,21 @@ namespace BobCalc1
         private string lastOperation;
         private bool calculationPending;
 
+        
+       List<string> cells = new List<string>();
+                
+      
+
         public MainWindow()
         {
             InitializeComponent();
-            this.KeyDown += new KeyEventHandler(MainWindow_KeyDown);
+           // this.KeyDown += new KeyEventHandler(MainWindow_KeyDown);
+            this.KeyUp += new KeyEventHandler(MainWindow_KeyUp);
+
 
         }
 
-        void MainWindow_KeyDown(object sender, KeyEventArgs e)
+        void MainWindow_KeyUp(object sender, KeyEventArgs e)
         {
 
             switch (e.Key)
@@ -73,10 +80,23 @@ namespace BobCalc1
                     buttonPlus.PerformClick();
                     break;
                 case Key.Enter:
+                    e.Handled = true;
                     buttonEquals.PerformClick();
+                   
                     break;
+
             }
           
+        }
+
+        // KeyDown event swallowed for enter key so use PreviewKeyDown instead
+        private void BobCalc_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            return;
+            if (e.Key == Key.Enter)
+            {
+                buttonEquals.PerformClick();
+            }
         }
 
         private void numButton_Click(object sender, RoutedEventArgs e)
@@ -89,6 +109,7 @@ namespace BobCalc1
             }
             string number = (sender as Button).Content.ToString();
             calcDisplay.Text = calcDisplay.Text == "0" ? number : calcDisplay.Text + number;
+            HistoryDisplay.Text += number;
         }
 
         private void opButton_Click(object sender, RoutedEventArgs e)
@@ -100,9 +121,17 @@ namespace BobCalc1
             {
                 accumulator = 0;
                 calcDisplay.Text = "0";
+                HistoryDisplay.Text = "";
+                calculationPending = false;
+                return;
+
+               
             }
             else
             {
+                cells.Add(calcDisplay.Text);
+                cells.Add(operation);
+               
                 calculationPending = true;
 
                 double currentValue = double.Parse(calcDisplay.Text);
@@ -114,15 +143,37 @@ namespace BobCalc1
                     case "/": accumulator /= currentValue; break;
                     default: accumulator = currentValue; break;
                 }
+                HistoryDisplay.Text += operation;
+                calcDisplay.Text = accumulator.ToString();
             }
 
             lastOperation = operation;
             //calcDisplay.Text = operation == "=" ? accumulator.ToString() : "0";
             if (operation == "=")
+            {
                 calcDisplay.Text = accumulator.ToString();
+                HistoryDisplay.Text += accumulator.ToString();
+                ParseExpression();
 
+            }
         }
 
-      
+        void ParseExpression()
+        {
+            bool mayBeMore = true;             // evaluate condense any multiply operations
+            while (mayBeMore){
+                int s = cells.FindIndex(x => x.ToString() == "x");
+                if (s >= 0)
+                {
+                    double sum = Convert.ToDouble(cells[s - 1]) * Convert.ToDouble(cells[s + 1]);
+                    cells[s] = sum.ToString();
+                    cells.RemoveAt(s + 1);
+                    cells.RemoveAt(s - 1);
+                }
+                else mayBeMore = false;
+            }
+
+        }
+   
     }
 }
