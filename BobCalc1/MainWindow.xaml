@@ -9,13 +9,34 @@
         Title="MainWindow" Height="408" Width="398.7">
     <Window.Resources>
         <Storyboard x:Key="Storyboard1"/>
+        <Storyboard x:Key="StoryboardPushBtton">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rectangle">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="6.667"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rectangle">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="5.778"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rectangle1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="6.667"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rectangle1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="5.778"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="textBlock">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="6.667"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="textBlock">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="5.778"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+            <BeginStoryboard Storyboard="{StaticResource StoryboardPushBtton}"/>
         </EventTrigger>
     </Window.Triggers>
-    <Grid x:Name="BobCalc" Margin="-9,-16.5,-21.5,-4.5" PreviewKeyDown="BobCalc_PreviewKeyDown">
+    <Grid x:Name="BobCalc" Margin="-8.333,-16.5,-22.167,-4.5" PreviewKeyDown="BobCalc_PreviewKeyDown">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup"/>
         </VisualStateManager.VisualStateGroups>
@@ -43,7 +64,7 @@
         <Button x:Name="buttonTwo" Content="2" HorizontalAlignment="Left" Margin="129,184,0,0" Width="30" Click="numButton_Click" Height="30" VerticalAlignment="Top"/>
         <Button x:Name="buttonPlus" Content="+" HorizontalAlignment="Left" Margin="256,222,0,0" Width="30" Click="opButton_Click" Height="30" VerticalAlignment="Top"/>
         <Button x:Name="buttonEquals" Content="=" HorizontalAlignment="Left" Margin="256,312,0,0" VerticalAlignment="Top" Width="30" Click="opButton_Click" Height="30"/>
-        <Button x:Name="buttonClear" Content="C" Margin="275,150,0,0" VerticalAlignment="Top" Click="opButton_Click" AutomationProperties.AcceleratorKey="c" Height="30" HorizontalAlignment="Left" Width="40"/>
+        <Button x:Name="buttonClear" Content="C" Margin="256,141,0,0" VerticalAlignment="Top" Click="opButton_Click" AutomationProperties.AcceleratorKey="c" Height="30" HorizontalAlignment="Left" Width="40"/>
         <Button x:Name="buttonThree" Content="3" HorizontalAlignment="Left" Margin="187,184,0,0" Width="30" Click="numButton_Click" Height="30" VerticalAlignment="Top"/>
         <Button x:Name="buttonSubtract" Content="-" HorizontalAlignment="Left" Margin="256,192,0,0" Width="30" RenderTransformOrigin="0.259,0.23" Click="opButton_Click" Height="30" VerticalAlignment="Top"/>
         <Button x:Name="buttonPoint" Content="." HorizontalAlignment="Left" Margin="129,314,0,0" VerticalAlignment="Top" Width="30" Click="numButton_Click" Height="30"/>
@@ -58,6 +79,42 @@
         <Button x:Name="buttonDivide" Content="/" HorizontalAlignment="Left" Margin="256,282,0,0" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.184,-0.67" Click="opButton_Click" Height="30"/>
         <TextBlock x:Name="HistoryDisplay" HorizontalAlignment="Left" Margin="37,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="322" Background="#FFADC9C6" TextAlignment="Right" Padding="0,0,10,0"/>
         <Button x:Name="buttonPlusMinus" Content="+/-" HorizontalAlignment="Left" Margin="187,314,0,0" VerticalAlignment="Top" Width="30" Click="numButton_Click" Height="30"/>
+        <Rectangle x:Name="rectangle" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="29.145" Margin="37,132.385,0,0" Stroke="Black" VerticalAlignment="Top" Width="31.557" RadiusX="10" RadiusY="10" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="rectangle1" HorizontalAlignment="Left" Height="26" Margin="38.556,134.386,0,0" Stroke="Black" VerticalAlignment="Top" Width="28" RadiusX="10" RadiusY="10" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF659282" Offset="0"/>
+                    <GradientStop Color="#FF90CEB8" Offset="0.39"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="18.781" Margin="40.999,138.27,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="23.556" TextAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
 
     </Grid>
 </Window>

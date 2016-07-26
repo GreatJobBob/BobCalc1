@@ -153,27 +153,42 @@ namespace BobCalc1
             {
                 calcDisplay.Text = accumulator.ToString();
                 HistoryDisplay.Text += accumulator.ToString();
-                ParseExpression();
-
+                ReduceMultiplyAndDivide("x");
+                ReduceMultiplyAndDivide("/");
             }
         }
 
-        void ParseExpression()
+        void ReduceMultiplyAndDivide(string operation)
         {
             bool mayBeMore = true;             // evaluate condense any multiply operations
+            double result = 0;
+
+
             while (mayBeMore){
-                int s = cells.FindIndex(x => x.ToString() == "x");
+                int s = cells.FindIndex(x => x.ToString() == operation);
                 if (s >= 0)
                 {
-                    double sum = Convert.ToDouble(cells[s - 1]) * Convert.ToDouble(cells[s + 1]);
-                    cells[s] = sum.ToString();
+                    if (operation == "x")
+                    {
+                        result = Convert.ToDouble(cells[s - 1]) * Convert.ToDouble(cells[s + 1]);
+                    }
+                    else if (operation == "/") {
+
+                        result = Convert.ToDouble(cells[s - 1]) / Convert.ToDouble(cells[s + 1]);
+                    }
+                    cells[s] = result.ToString();
                     cells.RemoveAt(s + 1);
                     cells.RemoveAt(s - 1);
                 }
                 else mayBeMore = false;
             }
 
+           
+
+
+
+
         }
-   
+
     }
 }
