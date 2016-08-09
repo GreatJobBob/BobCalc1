@@ -339,7 +339,7 @@
             </TextBlock.RenderTransform><Run Text="0"/></TextBlock>
         <Button x:Name="buttonPlus" Content="+" HorizontalAlignment="Left" Margin="256,222,0,0" Width="30" Click="opButton_Click" Height="30" VerticalAlignment="Top" Style="{DynamicResource ButtonStyle2}"/>
         <Button x:Name="buttonEquals" Content="=" HorizontalAlignment="Left" Margin="256,312,0,0" VerticalAlignment="Top" Width="30" Click="opButton_Click" Height="30"/>
-        <Button x:Name="buttonClear" Content="C" Margin="256,141,0,0" VerticalAlignment="Top" Click="opButton_Click" AutomationProperties.AcceleratorKey="c" Height="30" HorizontalAlignment="Left" Width="40" Style="{DynamicResource ButtonStyle2}"/>
+        <Button x:Name="buttonClear" Content="C" Margin="246,138,0,0" VerticalAlignment="Top" Click="opButton_Click" AutomationProperties.AcceleratorKey="c" Height="30" HorizontalAlignment="Left" Width="40" Style="{DynamicResource ButtonStyle2}"/>
         <Button x:Name="buttonThree" Content="3" HorizontalAlignment="Left" Margin="187,184,0,0" Width="30" Click="numButton_Click" Height="30" VerticalAlignment="Top" Style="{DynamicResource ButtonStyle2}"/>
         <Button x:Name="buttonSubtract" Content="-" HorizontalAlignment="Left" Margin="256,192,0,0" Width="30" RenderTransformOrigin="0.259,0.23" Click="opButton_Click" Height="30" VerticalAlignment="Top" Style="{DynamicResource ButtonStyle2}"/>
         <Button x:Name="buttonPoint" Content="." HorizontalAlignment="Left" Margin="129,314,0,0" VerticalAlignment="Top" Width="30" Click="numButton_Click" Height="30" Style="{DynamicResource ButtonStyle2}"/>
